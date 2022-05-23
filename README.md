@@ -1,4 +1,2 @@
-# gih_UnitedFront
-
-## Dynamic QR Code
+# Dynamic QR Code
 

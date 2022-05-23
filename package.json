@@ -1,0 +1,23 @@
+{
+  "name": "gih_unitedfront",
+  "version": "1.0.0",
+  "description": "Dynammic QR code",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Asymmentric/gih_UnitedFront.git"
+  },
+  "author": "United Front",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Asymmentric/gih_UnitedFront/issues"
+  },
+  "homepage": "https://github.com/Asymmentric/gih_UnitedFront#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "mysql": "^2.18.1"
+  }
+}

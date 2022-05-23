@@ -25,17 +25,13 @@
   <body>
     <h1>Generate QR</h1>
     <div class="form-div">
-      <form id="form" action="/generate">
+      <form id="form" action="/generate" method="get">
         <div class="mb-3">
           <label for="profil_url" class="form-label"
             ><span id="form-main-text"
               >ENTER LINK TO GENERATE QR CODE</span
-            ></label
-          >
-          <input type="url" class="form-control" id="profil-url" />
-          <div id="emailHelp" class="form-text">
-            We'll never share your personal details with anyone else.
-          </div>
+            ></label>
+          <input type="text" class="form-control" id="profil-url" name="URL">
         </div>
         <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
       </form>

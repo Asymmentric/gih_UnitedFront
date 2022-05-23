@@ -7,18 +7,18 @@ const pool=require('./DB/pools')
 
 const app=express();
 
-app.use('/',express.static('client/generate'));
-app.use('/qrcode',express.static('client/qrcode'))
+app.use('/',express.static('views/generate'));
+app.use('/qrcode',express.static('views/qrcode'))
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
 
-
+app.set('view engine','ejs')
 
 app.get('/',(req,res)=>{
-    res.sendFile(path.join(__dirname,'/client/generate/index.html'))
+    res.sendFile(path.join(__dirname,'/views/generate/index.html'))
 })
 
-app.post('/generate',(req,res)=>{
+app.post('/qr/generate',(req,res)=>{
     let imgData=""
     console.log(JSON.parse(JSON.stringify(req.body)).full);
     pool.getConnection((err,connection)=>{
@@ -33,7 +33,10 @@ app.post('/generate',(req,res)=>{
                 return res.send({"message":"Unable to generate"})
             }
             qrcode.toDataURL(`localhost:6900/${shortUrl}`,(err,url)=>{
-                res.redirect(url);
+                let data={
+                    url:url
+                }
+                res.render('qrcode/index',{data})
             })
         }) 
          

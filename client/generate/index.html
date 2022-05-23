@@ -26,19 +26,17 @@
     <h1>Generate QR</h1>
     <div class="main-form gen-div">
       <div class="form-div" style="float: left">
-        <form id="form-gen" action="/generate">
+        <form action="/generate" method="post">
           <div class="mb-3">
             <label for="profil_url" class="form-label"
               ><span id="form-gen-text"
                 >ENTER LINK TO GENERATE QR CODE</span
               ></label
             >
-            <input type="text" class="form-control" id="profil-url" />
-            <div id="emailHelp" class="form-text">
-              We'll never share your personal details with anyone else.
-            </div>
+            <input type="text" class="form-control" id="profile-url" name=full >
+            
           </div>
-          <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+          <button id='submit' class="btn btn-primary btn-lg">Submit</button>
         </form>
       </div>
       <div class="form-div ver-div" style="float: right">
@@ -54,5 +52,6 @@
           
         </form>
       </div>
+      <script src="script_index.js"></script>
   </body>
 </html>

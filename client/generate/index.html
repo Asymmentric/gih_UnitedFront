@@ -24,21 +24,36 @@
   </head>
   <body>
     <h1>Generate QR</h1>
-    <div class="form-div">
-      <form id="form" action="/generate">
-        <div class="mb-3">
-          <label for="profil_url" class="form-label"
-            ><span id="form-main-text"
-              >ENTER LINK TO GENERATE QR CODE</span
-            ></label
-          >
-          <input type="url" class="form-control" id="profil-url" />
-          <div id="emailHelp" class="form-text">
-            We'll never share your personal details with anyone else.
+    <div class="main-form gen-div">
+      <div class="form-div" style="float: left">
+        <form id="form-gen" action="/generate">
+          <div class="mb-3">
+            <label for="profil_url" class="form-label"
+              ><span id="form-gen-text"
+                >ENTER LINK TO GENERATE QR CODE</span
+              ></label
+            >
+            <input type="text" class="form-control" id="profil-url" />
+            <div id="emailHelp" class="form-text">
+              We'll never share your personal details with anyone else.
+            </div>
           </div>
-        </div>
-        <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
-      </form>
+          <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+        </form>
+      </div>
+      <div class="form-div ver-div" style="float: right">
+        <form id="form-ver" action="#">
+          <div class="mb-3">
+            <label for="verify-link" class="form-label"
+              ><span id="form-ver-text">ENTER LINK TO VERIFY</span></label
+            >
+            <input type="text" class="form-control" id="ver-url" />
+          </div>
+          <input type="file" id="myFile" name="filename" />
+          <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+          
+        </form>
+      </div>
     </div>
   </body>
 </html>

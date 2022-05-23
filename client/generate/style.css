@@ -1,0 +1,22 @@
+body {
+  background-color: #8cc0de;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.form-div {
+  width: 600px;
+  margin: 100px auto;
+  text-align: center;
+  background-color: #0aa1dd;
+  padding: 100px;
+  border-radius: 20px;
+}
+
+#form-main-text {
+  font-size: large;
+  font-weight: bold;
+}

@@ -2,8 +2,10 @@ const  shortid = require('shortid');
 const express=require('express')
 const qrcode=require('qrcode')
 const path=require('path')
+const request=require('request');
 
-const pool=require('./DB/pools')
+const pool=require('./DB/pools');
+
 
 const app=express();
 
@@ -15,6 +17,16 @@ app.use(express.urlencoded({extended:false}))
 
 app.set('view engine','ejs')
 app.use(express.static(__dirname + '/views'));
+
+request.post('https://analytics.qr-codes.com/api/campaigns',{
+    api_key:'27b2ed3926dc3133a847e2068a275d1a',
+    action:'create_campaign',
+    title:'qr analytics',
+    url:'localhost:6900',
+    media:'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.DRI7RrDsCN0nAZpsjuZJIQHaHa%26pid%3DApi&f=1'
+},(err,response,data)=>{
+    if(!err) console.log(response);console.log(data)
+})
 
 app.get('/',(req,res)=>{
     res.sendFile(path.join(__dirname,'/views/generate/index.html'))

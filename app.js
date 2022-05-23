@@ -10,8 +10,8 @@ let qr=qrcode.toDataURL('https://www.instagram.com/aniruddha_bagal',{type:'termi
     console.log(url)
 })
 app.get('/someUrl',(req,res)=>{
-    // console.log(req)
-    // res.send(qr)
+    console.log(req)
+    res.send(qr)
 })
 
 app.listen(6900,()=>{

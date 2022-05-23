@@ -51,11 +51,12 @@ h1{
 
 <div id="qr">
     <img id="qr-img" src=<%= data.url %> onload="showImage()"><br><br>
-    <button type="button" class="btn btn-primary btn-lg">Edit QR</button>
+    <input id='stUrl' type="text" value=<%=data.shortUrl %> hidden>
+    <button type="button" class="btn btn-primary btn-lg" onclick="edit()">Edit QR</button>
    
 </div>
 
-<script src="script.js"></script>
+<script src="qrcode_script.js"></script>
 </body>
 </html>
 

@@ -7,15 +7,15 @@ const pool=require('./DB/pools')
 
 const app=express();
 
-app.use('/',express.static('views/generate'));
-app.use('/qrcode',express.static('views/qrcode'))
-app.use(express.static('views'))
+// app.use('/',express.static('/views/generate'));
+// app.use('/qrcode',express.static('/views/qrcode'))
+
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
 
 app.set('view engine','ejs')
-app.use(express.static(__dirname + '/views'));
-
+// app.use(express.static(__dirname + '/views'));
+app.use(express.static('/views'))
 app.get('/',(req,res)=>{
     res.sendFile(path.join(__dirname,'/views/generate/index.html'))
 })
@@ -35,7 +35,8 @@ app.post('/qr/generate',(req,res)=>{
             }
             qrcode.toDataURL(`localhost:6900/${shortUrl}`,(err,url)=>{
                 let data={
-                    url:url
+                    url:url,
+                    shortUrl:shortUrl
                 }
                 res.render('qrcode/index',{data})
             })
@@ -63,7 +64,7 @@ app.get('/:shortURL',(req,res)=>{
 app.post('/qr/edit/:shortUrl',(req,res)=>{
     pool.getConnection((err,connection)=>{
         if(err) throw err;
-        // req.
+        
         let sql2=`update shortUrl set full=? where short= ?`
         connection.query(sql2,[req.body.full,req.params.shortUrl],(err,results)=>{
             connection.release();

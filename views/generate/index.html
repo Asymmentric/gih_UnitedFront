@@ -1,0 +1,56 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QR</title>
+
+    <!-- BOOTSTRAP -->
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav>
+      <h1>DASHBOARD</h1>
+    </nav>
+    <div class="main-form gen-div">
+      <div class="form-div" style="float: left">
+          <div class="mb-3">
+            <label for="profil_url" class="form-label"
+              ><span id="form-gen-text"
+                >ENTER LINK TO GENERATE QR CODE</span
+              ></label
+            >
+            <form method="post" action="/qr/generate">
+            <input type="text" class="form-control" id="profile-url" name=full >
+            
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg">Submit</button></form>
+      </div>
+      <div class="form-div ver-div" style="float: right">
+          <div class="mb-3">
+            <label for="verify-link" class="form-label"
+              ><span id="form-ver-text">ENTER LINK TO VERIFY</span></label
+            >
+            <input type="text" class="form-control" id="ver-url" />
+          </div>
+          <input type="file" id="myFile" name="filename" />
+          <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+      </div>
+      </div>
+      <script src="script_index.js"></script>
+  </body>
+</html>

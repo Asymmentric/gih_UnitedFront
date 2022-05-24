@@ -1,0 +1,21 @@
+body{
+    background-color: #92CCE6;
+}
+
+#edit{
+    text-align: center;
+    margin-top: 10%;
+    background-color: #23463F;
+    width: 50%;
+    margin: 10% auto;
+    padding: 50px;
+    border-radius: 20px;
+    
+}
+
+#form-gen-text{
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+}
+

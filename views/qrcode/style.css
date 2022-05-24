@@ -1,0 +1,38 @@
+body{
+    background-color: #92CCE6;
+}
+
+h1{
+    text-align: center;
+    margin-top: 30px;
+}
+
+.nav1{
+    height: 70px;
+
+}
+
+#qr{
+    width: 600px;
+    margin: 25px auto 20px auto;
+    text-align: center;
+    background-color: #23463F;
+    padding: 100px;
+    border-radius: 20px;
+}
+
+#edit-btn{
+    width: 600px;
+    margin: 0px auto;
+    text-align: center;
+    background-color: #0aa1dd;
+}
+
+#qr-img{
+    width: 50%;
+}
+
+a, a:hover, a:focus, a:active {
+    text-decoration: none;
+    color: inherit;
+}

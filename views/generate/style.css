@@ -7,13 +7,32 @@ h1 {
   margin-top: 30px;
 }
 
+/* .main-form{
+  display: inline;
+} */
+
 .form-div {
   width: 600px;
-  margin: 100px auto;
+  margin: 50px auto;
   text-align: center;
   background-color: #0aa1dd;
   padding: 100px;
   border-radius: 20px;
+}
+
+.gen-div{
+  margin-left: 50px;
+  margin-right: 0;
+}
+
+.ver-div{
+  margin-left: 0;
+  margin-right: 50px;
+}
+
+.ana-form{
+  background-color: #0aa1dd;
+  
 }
 
 #form-main-text {

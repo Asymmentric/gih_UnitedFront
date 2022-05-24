@@ -19,7 +19,12 @@ app.set('view engine','ejs')
 app.use(express.static('/views'))
 
 request.get('https://www.google.com',(err,res,data)=>{
-    if(!err) console.log(res.statusCode);
+    if(!err){
+        if(res.statusCode===200){
+            console.log(res.client.servername)
+        }
+        
+    }
 })
 
 // request.post('https://analytics.qr-codes.com/api/campaigns',{

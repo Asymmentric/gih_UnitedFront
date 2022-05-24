@@ -2,14 +2,8 @@ const  shortid = require('shortid');
 const express=require('express')
 const qrcode=require('qrcode')
 const path=require('path')
-<<<<<<< HEAD
-const request=require('request');
-
-const pool=require('./DB/pools');
-=======
 const request=require('request')
->>>>>>> d35d845ed0a91d528ec044698a1e175b7ba630e5
-
+const pool=require('./DB/pools')
 
 const app=express();
 
@@ -28,18 +22,18 @@ request.get('https://www.google.com',(err,res,data)=>{
     if(!err) console.log(res.statusCode);
 })
 
-request.post('https://analytics.qr-codes.com/api/campaigns',{
-    api_key:'27b2ed3926dc3133a847e2068a275d1a',
-    action:'create_campaign',
-    title:'qr analytics',
-    url:'localhost:6900',
-    media:'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.DRI7RrDsCN0nAZpsjuZJIQHaHa%26pid%3DApi&f=1'
-},(err,response,data)=>{
-    if(!err) console.log(response);console.log(data)
-})
+// request.post('https://analytics.qr-codes.com/api/campaigns',{
+//     api_key:'27b2ed3926dc3133a847e2068a275d1a',
+//     action:'create_campaign',
+//     title:'qr analytics',
+//     url:'localhost:6900',
+//     media:'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.DRI7RrDsCN0nAZpsjuZJIQHaHa%26pid%3DApi&f=1'
+// },(err,response,data)=>{
+//     if(!err) console.log(response);console.log(data)
+// })
 
 app.get('/',(req,res)=>{
-    res.sendFile(path.join(__dirname,'/views/generate/index.html'))
+    res.render('generate/index')
 })
 
 app.post('/qr/generate',(req,res)=>{
@@ -58,7 +52,7 @@ app.post('/qr/generate',(req,res)=>{
                 console.log(error);
                 return res.send({"message":"Unable to generate"})
             }
-            qrcode.toDataURL(`localhost:6900/${shortUrl}`,(err,url)=>{
+            qrcode.toDataURL(`localhost:6901/${shortUrl}`,(err,url)=>{
                 let data={
                     url:url,
                     shortUrl:shortUrl
@@ -72,16 +66,20 @@ app.post('/qr/generate',(req,res)=>{
  })
  
 
-app.get('/qr/edit/:shortUrl',(req,res)=>{
+app.post('/qr/edit/:shortUrl',async (req,res)=>{
+    console.log(req.body.full)
+    console.log(req.params.shortUrl)
     pool.getConnection((err,connection)=>{
         if(err) throw err;
         
         let sql2=`update shortUrl set full=? where short= ?`
-        connection.query(sql2,['https://www.amazon.in',req.params.shortUrl],(err,results)=>{
+        connection.query(sql2,[req.body.full,req.params.shortUrl],(err)=>{
             connection.release();
             if(err) throw err;
-            res.redirect(`/${req.params.shortUrl}`)
+            console.log("hweh")
+            
         })
+        res.sendStatus(200)
     })
 })
 

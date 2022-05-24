@@ -15,12 +15,9 @@
 
 <div id="qr">
     <img id="qr-img" src=<%= data.url %> onload="showImage()"><br><br>
-    
-    <button type="button" target="" class="btn btn-primary btn-lg"><a href="edit.html" 
-        target="popup" 
-        onclick="window.open('edit.html','popup','width=900,height=500'); return false;">
-          Edit QR
-      </a></button>
+    <input type="text" name="stUrl" id="stUrl" value=<%= data.shortUrl %> hidden>
+    <input type="text" name="editLink" id="editLink">
+    <input type="button" value="Edit" id="changeBtn">
       
     <button type="button" target="" class="btn btn-primary btn-lg">Download</button>
 </div>
@@ -29,7 +26,27 @@
 
 </div>
 
-<script src="qrcode_script.js"></script>
+<!-- <script src="qrcode_script.js"> -->
+<script>
+    
+    
+    changeBtn.addEventListener('click',async ()=>{
+    let shortUrl=document.getElementById('stUrl').value
+    console.log(shortUrl)
+
+    const editLink=document.getElementById("editLink").value;
+    console.log(editLink);
+    const changeBtn=document.getElementById('changeBtn');
+    let xhr=new XMLHttpRequest()
+    await xhr.open('post',`/qr/edit/${shortUrl}`,true)
+    await xhr.setRequestHeader('Content-Type','application/json;charset=utf-8')
+    await xhr.send(JSON.stringify({"full":editLink})) 
+          xhr.onload=()=>{
+            window.location=`http://localhost:6901/${shortUrl}`
+        }
+    
+    })
+</script>
 </body>
 </html>
 

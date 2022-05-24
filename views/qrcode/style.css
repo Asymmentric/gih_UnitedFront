@@ -31,3 +31,8 @@ h1{
 #qr-img{
     width: 50%;
 }
+
+a, a:hover, a:focus, a:active {
+    text-decoration: none;
+    color: inherit;
+}
